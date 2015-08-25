@@ -22,49 +22,58 @@ public class VasoResource {
 	@GET
 	@Path(value = "/lista/vasos")	
 	@Produces("application/json")
-	public List<Vaso> getVasos(@QueryParam("idUser") int idUser){
+	public List<Vaso> getVasos(){
 		
-           
+		//Integer idUserInteger = Integer.getInteger(idUser);            
 
-		return dao.buscaVasos(1, 0); 
+		return dao.buscaVasos(0, 0); 
 	}
 	
 	@Path(value = "/lista/vaso")
 	@GET
 	@Produces("application/json")
-	public Vaso getVaso(@QueryParam("idUser") int idUser,
-						@QueryParam("iduser") int idvaso){
+	public Vaso getVaso(@QueryParam("idUser") String idUser,
+						@QueryParam("iduser") String idVaso){
 
-           
-		return dao.buscaVasos(1, 0).get(0); 
+		Integer idUserInteger = Integer.getInteger(idUser); 
+		Integer idVasoInteger = Integer.getInteger(idVaso); 
+		return dao.buscaVasos(idUserInteger, idVasoInteger).get(0); 
 	}
 
 
 	@PUT
-	@Path("/one")
+	@Path("/update")
 	@Consumes("application/json")
-	public void updateVaso(@QueryParam("idUser") int idUser,Vaso v){
+	public void updateVaso(Vaso v){
 				
 		//recebe um vaso e atualiza pertencente a um usuario com id = idUser e atualiza as informações do banco
 		
 	}	
 
 	@POST
-	@Path("/one")
+	@Path("/post")
 	@Consumes("application/json")
-	public void postVaso(@QueryParam("idUser") int idUser,Vaso v){
-				
-		//recebe um vaso e atualiza pertencente a um usuario com id = idUser e cadastra esse novo vaso no banco.
-			
+	public void postVaso(){
+		Vaso v = new Vaso();
+		
+		v.setId(2);
+		v.setDescricao("teste2");
+		v.setMAC("444444");
+		v.setTemp(23);
+		v.setUmidSolo(25);
+		v.setUmidAr(30);
+		v.setLuz(45);
+		v.setAtivo(1);	
+		
+		dao.inserirVaso(v);			
 	}
 
 	@DELETE
-	@Path("/one")
+	@Path("/delete")
 	@Consumes("application/json")
-	public void deleteVaso(@QueryParam("idUser") int idUser,
-						  @QueryParam("idVaso") int idVaso	){
+	public void deleteVaso(@QueryParam("idVaso") int idVaso	){
 					
-		//deleta o vaso com id = idVaso que pertence ao cliente com id = idVaso
+		dao.deletVaso(idVaso);
 			
 	}	
 }
