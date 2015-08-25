@@ -26,6 +26,8 @@ public class SensoresResource {
 	//@Autowired
 	//private JdbcTemplate jt;
 	
+	private static final String url = "";
+	
 	@GET
 	@Path(value = "/lista/sensores")
 	@Produces({"application/xml"})
@@ -35,13 +37,13 @@ public class SensoresResource {
 		JdbcTemplate jt = new JdbcTemplate(Fabrica.getDataSource());		
 		String sql;		
 		//sql = "INSERT INTO `gardendimap`.`sensor` (`idsensor`, `valor`, `descricao`) VALUES ('2', '10', 'Teste 2');";
-		sql = " SELECT s.idsensor, s.valor, s.descricao "
+		/*sql = " SELECT s.idsensor, s.valor, s.descricao "
 				+ " FROM gardendimap.sensor s "
 				+ " where s.idsensor = 1 ";
 		//jt.execute(sql);
 		jt.queryForList(sql);
-		
-		return "Deu certoo!!";
+		*/
+		return "<xml>Deu certoo!!</xml>";
 	}
 	
 	@GET

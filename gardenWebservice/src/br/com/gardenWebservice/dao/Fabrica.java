@@ -12,9 +12,9 @@ public class Fabrica {
 	 	public static SimpleDriverDataSource getDataSource() throws SQLException{
 	 		SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
 	 		dataSource.setDriver(new com.mysql.jdbc.Driver());
-	        dataSource.setUrl("jdbc:mysql://localhost/gardenDimap");
-	        dataSource.setUsername("root");
-	        dataSource.setPassword("alysson1989");
+	        dataSource.setUrl("jdbc:mysql://localhost/connected_garden");
+	        dataSource.setUsername("garden");
+	        dataSource.setPassword("garden");
 	 		
 	 		return dataSource;
 	 	}
