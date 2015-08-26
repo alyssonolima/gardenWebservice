@@ -29,7 +29,7 @@ public class VasoRepository {
 				Vaso vaso = new Vaso();
 				vaso.setId(((Integer) map.get("idvaso")).longValue());
 				vaso.setDescricao((String) map.get("descricao"));
-				vaso.setMAC((String) map.get("map"));
+				vaso.setMAC((String) map.get("mac"));
 				vaso.setTemp((int) map.get("temp"));
 				vaso.setUmidSolo((int) map.get("umidsolo"));
 				vaso.setUmidAr((int) map.get("umidar"));
@@ -62,15 +62,34 @@ public class VasoRepository {
 		
 		try {
 			jt = new JdbcTemplate(Fabrica.getDataSource());
+			jt.execute(sql);
+			
+			//jt.getDataSource().getConnection().commit();
+			//jt.getDataSource().getConnection().close();
+			
+		} catch (SQLException e) {			
+			e.printStackTrace();
+		}		
+	}
+	
+	public void updateVaso(Vaso v){
+		
+		String sql = " UPDATE `connected_garden`.`vaso` " +
+				" SET `descricao`='" + v.getDescricao() +
+				"', `mac`='" + v.getMAC() +
+				"', `temp`='" + v.getTemp() +
+				"', `umidsolo`='" + v.getUmidSolo() + 
+				"', `umidar`='" + v.getUmidAr() + 
+				"', `luz`='" + v.getLuz() + 
+				"', `ativo`='" + v.getAtivo() + 
+				"' WHERE `idvaso`='" + v.getId() + "'";
+		
+		try {
+			jt = new JdbcTemplate(Fabrica.getDataSource());
 		} catch (SQLException e) {			
 			e.printStackTrace();
 		}
-		
-		jt.execute(sql);
-		
-	}
-	
-	public void updateVaso(){
+		jt.update(sql);
 		
 	}
 	

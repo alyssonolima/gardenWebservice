@@ -1,26 +1,25 @@
 package br.com.gardenWebservice.entity;
 
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "vaso")
 public class Vaso {
 
-	@XmlElement(name = "id")
+	
 	private long id;
-	@XmlElement(name = "descricao")
+	
 	private String descricao;
-	@XmlElement(name = "mac")
+	
 	private String MAC;
-	@XmlElement(name = "temp")
+	
 	private int temp;
-	@XmlElement(name = "umidsolo")
+	
 	private int umidSolo;
-	@XmlElement(name = "umidar")
+
 	private int umidAr;
-	@XmlElement(name = "luz")
+	
 	private int luz;
-	@XmlElement(name = "ativo")
+	
 	private int ativo;
 
 	public Vaso(){}

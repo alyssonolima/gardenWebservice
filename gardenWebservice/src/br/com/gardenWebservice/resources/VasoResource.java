@@ -20,60 +20,31 @@ public class VasoResource {
 	VasoRepository dao = new VasoRepository();
 	
 	@GET
-	@Path(value = "/lista/vasos")	
-	@Produces("application/json")
+	@Path(value = "/one")	
+	@Produces({"application/xml", "application/json"})
 	public List<Vaso> getVasos(){
-		
-		//Integer idUserInteger = Integer.getInteger(idUser);            
-
 		return dao.buscaVasos(0, 0); 
 	}
-	
-	@Path(value = "/lista/vaso")
-	@GET
-	@Produces("application/json")
-	public Vaso getVaso(@QueryParam("idUser") String idUser,
-						@QueryParam("iduser") String idVaso){
-
-		Integer idUserInteger = Integer.getInteger(idUser); 
-		Integer idVasoInteger = Integer.getInteger(idVaso); 
-		return dao.buscaVasos(idUserInteger, idVasoInteger).get(0); 
-	}
-
-
-	@PUT
-	@Path("/update")
-	@Consumes("application/json")
-	public void updateVaso(Vaso v){
-				
-		//recebe um vaso e atualiza pertencente a um usuario com id = idUser e atualiza as informações do banco
 		
+	@PUT
+	@Path("/one")
+	@Consumes("application/json")
+	public void updateVaso(Vaso v){			
+		dao.updateVaso(v);		
 	}	
 
 	@POST
-	@Path("/post")
+	@Path("/one")
 	@Consumes("application/json")
-	public void postVaso(){
-		Vaso v = new Vaso();
-		
-		v.setId(2);
-		v.setDescricao("teste2");
-		v.setMAC("444444");
-		v.setTemp(23);
-		v.setUmidSolo(25);
-		v.setUmidAr(30);
-		v.setLuz(45);
-		v.setAtivo(1);	
-		
-		dao.inserirVaso(v);			
+	public void postVaso(Vaso v ){		
+		dao.inserirVaso(v);		
 	}
 
 	@DELETE
-	@Path("/delete")
-	@Consumes("application/json")
-	public void deleteVaso(@QueryParam("idVaso") int idVaso	){
-					
-		dao.deletVaso(idVaso);
-			
+	@Path("/one")
+	@Consumes({"application/xml", "application/json"})
+	public void deleteVaso(@QueryParam("idVaso") String idVaso	){			
+		Integer idVasoInteger = Integer.parseInt(idVaso);
+		dao.deletVaso(idVasoInteger);		
 	}	
 }
