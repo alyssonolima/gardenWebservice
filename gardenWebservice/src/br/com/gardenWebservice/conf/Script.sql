@@ -1,5 +1,5 @@
 
-
+CREATE SCHEMA `connected_garden` ;
 
 
 
