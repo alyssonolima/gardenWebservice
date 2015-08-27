@@ -21,7 +21,7 @@ public class VasoResource {
 	
 	@GET
 	@Path(value = "/one")	
-	@Produces({"application/xml", "application/json"})
+	@Produces("application/json")
 	public List<Vaso> getVasos(){
 		return dao.buscaVasos(0, 0); 
 	}
