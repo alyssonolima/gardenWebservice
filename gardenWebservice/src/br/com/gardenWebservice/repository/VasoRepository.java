@@ -19,7 +19,7 @@ public class VasoRepository {
 		List<Vaso> vasos = new ArrayList<Vaso>();
 		String sql = "SELECT * FROM connected_garden.vaso";
 		if(idVaso > 0){
-			sql += " where idvaso = " + idVaso; 
+			sql += " where id = " + idVaso; 
 		}
 		try {
 			jt = new JdbcTemplate(Fabrica.getDataSource());			
@@ -27,13 +27,16 @@ public class VasoRepository {
 			
 			for(Map<String, Object> map: result){
 				Vaso vaso = new Vaso();
-				vaso.setId(((Integer) map.get("idvaso")).longValue());
+				vaso.setId(((Integer) map.get("id")).longValue());
 				vaso.setDescricao((String) map.get("descricao"));
-				vaso.setMAC((String) map.get("mac"));
+				vaso.setMac1((String) map.get("mac1"));
+				vaso.setMac2((String) map.get("mac2"));
 				vaso.setTemp((int) map.get("temp"));
 				vaso.setUmidSolo((int) map.get("umidsolo"));
 				vaso.setUmidAr((int) map.get("umidar"));
 				vaso.setLuz((int) map.get("luz"));
+				vaso.setBomba((int) map.get("bomba"));
+				vaso.setBombaAT((int) map.get("bombaAT"));
 				vaso.setAtivo((int) map.get("ativo"));				
 								
 				vasos.add(vaso);				
@@ -49,16 +52,19 @@ public class VasoRepository {
 	}
 	
 	public void inserirVaso(Vaso vaso){
-		String sql = " INSERT INTO `connected_garden`.`vaso` (`idvaso`, `descricao`, `mac`, `temp`, `umidsolo`, `umidar`, `luz`, `ativo`)" +
-				" VALUES ('" 
-				+ vaso.getId() +"', '" 
-				+ vaso.getDescricao() +"', '"
-				+ vaso.getMAC() +"', '"
-				+ vaso.getTemp() +"', '"
-				+ vaso.getUmidSolo() +"', '"
-				+ vaso.getUmidAr() +"', '"
-				+ vaso.getLuz() +"', '"
-				+ vaso.getAtivo() +"')";
+		String sql = " INSERT INTO `connected_garden`.`vaso` (`id`, `descricao`, `mac1`, `mac2`, `temp`, `umidSolo`, `umidAr`, `luz`, `bomba`, `bombaAT`, `ativo`) " +
+				"VALUES ('" 
+				+ vaso.getId() + "', '" 
+				+ vaso.getDescricao() + "', '" 
+				+ vaso.getMac1() + "', '" 
+				+ vaso.getMac2() + "', '" 
+				+ vaso.getTemp() + "', '" 
+				+ vaso.getUmidSolo() + "', '" 
+				+ vaso.getUmidAr() + "', '" 
+				+ vaso.getLuz() + "', '" 
+				+ vaso.getBomba() + "', '" 
+				+ vaso.getBombaAT() + "', '" 
+				+ vaso.getAtivo() + "')";
 		
 		try {
 			jt = new JdbcTemplate(Fabrica.getDataSource());
@@ -75,14 +81,18 @@ public class VasoRepository {
 	public void updateVaso(Vaso v){
 		
 		String sql = " UPDATE `connected_garden`.`vaso` " +
-				" SET `descricao`='" + v.getDescricao() +
-				"', `mac`='" + v.getMAC() +
-				"', `temp`='" + v.getTemp() +
-				"', `umidsolo`='" + v.getUmidSolo() + 
-				"', `umidar`='" + v.getUmidAr() + 
-				"', `luz`='" + v.getLuz() + 
-				"', `ativo`='" + v.getAtivo() + 
-				"' WHERE `idvaso`='" + v.getId() + "'";
+				"SET `" +
+				"descricao`='" + v.getDescricao() + "', `" +
+				"mac1`='" + v.getMac1() + "', `" +
+				"mac2`='" + v.getMac2() + "', `" +
+				"temp`='" + v.getTemp() + "', `" +
+				"umidSolo`='" + v.getUmidSolo() + "', `" +
+				"umidAr`='" + v.getUmidAr() + "', `" +
+				"luz`='" + v.getLuz() + "', `" +
+				"bomba`='" + v.getBomba() + "', `" +
+				"bombaAT`='" + v.getBombaAT() + "', `" +
+				"ativo`='" + v.getAtivo() + "' " +
+				"WHERE `id`='" + v.getId() + "'";
 		
 		try {
 			jt = new JdbcTemplate(Fabrica.getDataSource());
@@ -95,7 +105,7 @@ public class VasoRepository {
 	
 	public void deletVaso(int idvaso){
 		
-		String sql = " DELETE FROM `connected_garden`.`vaso` WHERE `idvaso`='" + idvaso + "'";
+		String sql = " DELETE FROM `connected_garden`.`vaso` WHERE `id`='" + idvaso + "'";
 		try {
 			jt = new JdbcTemplate(Fabrica.getDataSource());
 		} catch (SQLException e) {			

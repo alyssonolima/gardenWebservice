@@ -5,15 +5,17 @@ CREATE SCHEMA `connected_garden` ;
 
 
 CREATE TABLE `connected_garden`.`vaso` (
-  `idvaso` INT NOT NULL,
-  `descricao` VARCHAR(255) NULL,
-  `mac` VARCHAR(45) NULL,
-  `temp` INT NULL,
-  `umidsolo` INT NULL,
-  `umidar` INT NULL,
-  `luz` INT NULL,
-  `ativo` INT NULL,
-  PRIMARY KEY (`idvaso`))
-COMMENT = 'tabela que representa um vaso.';
+  `id` INT NOT NULL DEFAULT 0 COMMENT '',
+  `descricao` VARCHAR(255) NULL DEFAULT 'vaso' COMMENT '',
+  `mac1` VARCHAR(18) NULL DEFAULT '00:00:00:00:00:00' COMMENT '',
+  `mac2` VARCHAR(18) NULL DEFAULT '00:00:00:00:00:00' COMMENT '',
+  `temp` INT NULL DEFAULT 0 COMMENT '',
+  `umidSolo` INT NULL DEFAULT 0 COMMENT '',
+  `umidAr` INT NULL DEFAULT 0 COMMENT '',
+  `luz` INT NULL DEFAULT 0 COMMENT '',
+  `bomba` INT NULL DEFAULT 0 COMMENT '',
+  `bombaAT` INT NULL DEFAULT 0 COMMENT '',
+  `ativo` INT NULL DEFAULT 0 COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '');
 
 
