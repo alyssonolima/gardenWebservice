@@ -12,30 +12,13 @@ import br.com.gardenWebservice.entity.Sensores;
 
 @Path(value = "/sensores")
 public class SensoresResource {
-
-	//@Autowired
-	//SensoresRepository dao;
 	
-	//@Autowired
-	//private JdbcTemplate jt;
-	
-	//private static final String url = "";
 	
 	@GET
 	@Path(value = "/lista/sensores")
 	@Produces({"application/xml"})
 	public String getSensores() throws SQLException{
 				
-			
-		//JdbcTemplate jt = new JdbcTemplate(Fabrica.getDataSource());		
-	//	String sql;		
-		//sql = "INSERT INTO `gardendimap`.`sensor` (`idsensor`, `valor`, `descricao`) VALUES ('2', '10', 'Teste 2');";
-		/*sql = " SELECT s.idsensor, s.valor, s.descricao "
-				+ " FROM gardendimap.sensor s "
-				+ " where s.idsensor = 1 ";
-		//jt.execute(sql);
-		jt.queryForList(sql);
-		*/
 		return "<xml>Deu certoo!!</xml>";
 	}
 	
@@ -44,9 +27,7 @@ public class SensoresResource {
 	@Produces({"application/xml", "application/json"})
 	public Sensores getSensorId(@PathParam("id") String id){
 		
-	//	Integer idInteger = id != null? Integer.valueOf(id) : 0;
-		
-		//dao.buscaSensores(idInteger);
+	
 		return new Sensores();
 	}
 	
