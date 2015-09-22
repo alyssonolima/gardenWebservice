@@ -1,6 +1,5 @@
 package br.com.gardenWebservice.resources;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -12,16 +11,19 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 import br.com.gardenWebservice.entity.AlertType;
+import br.com.gardenWebservice.repository.AlertTypeRepository;
 
 @Path(value = "/alertType")
 public class AlertTypeResource {
 
+	private AlertTypeRepository dao = new AlertTypeRepository();
+	
 	@GET
 	@Path(value = "/one")
 	@Produces("application/json")
 	public List<AlertType> getAlertType(){
 		
-		return new ArrayList<AlertType>();
+		return dao.findAlertType();
 	}
 	
 	@POST

@@ -13,7 +13,7 @@ public class PotRepository {
 	public List<Pot> findPot(){
 		
 	
-		return new ArrayList<>();
+		return new ArrayList<Pot>();
 	}
 	
 	public void insertPot(){

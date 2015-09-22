@@ -13,7 +13,7 @@ public class GardenRepository {
 	public List<Garden> findGarden(){
 		
 	
-		return new ArrayList<>();
+		return new ArrayList<Garden>();
 	}
 	
 	public void insertGarden(){

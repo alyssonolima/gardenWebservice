@@ -13,7 +13,7 @@ public class AlertRepository {
 	public List<Alert> findAlert(){
 		
 	
-		return new ArrayList<>();
+		return new ArrayList<Alert>();
 	}
 	
 	public void insertAlert(){

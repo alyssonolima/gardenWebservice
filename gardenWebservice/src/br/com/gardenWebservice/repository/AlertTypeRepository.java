@@ -12,7 +12,7 @@ public class AlertTypeRepository {
 	public List<AlertType> findAlertType(){
 		
 	
-		return new ArrayList<>();
+		return new ArrayList<AlertType>();
 	}
 	
 	public void insertAlertType(){

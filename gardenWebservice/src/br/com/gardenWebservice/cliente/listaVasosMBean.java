@@ -1,19 +1,8 @@
 package br.com.gardenWebservice.cliente;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
-
-import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
 import br.com.gardenWebservice.entity.Vaso;

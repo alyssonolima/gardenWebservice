@@ -13,7 +13,7 @@ public class UserGardenRepository {
 	public List<UserGarden> findUserGarden(){
 		
 	
-		return new ArrayList<>();
+		return new ArrayList<UserGarden>();
 	}
 	
 	public void insertUserGarden(){

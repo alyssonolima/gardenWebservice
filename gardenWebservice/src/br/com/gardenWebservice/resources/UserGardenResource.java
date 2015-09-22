@@ -1,6 +1,5 @@
 package br.com.gardenWebservice.resources;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -12,16 +11,19 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 import br.com.gardenWebservice.entity.UserGarden;
+import br.com.gardenWebservice.repository.UserGardenRepository;
 
 @Path(value = "/userGarden")
 public class UserGardenResource {
 
+	private UserGardenRepository dao = new UserGardenRepository();
+	
 	@GET
 	@Path(value = "/one")
 	@Produces("application/json")
 	public List<UserGarden> getUserGarden(){
 		
-		return new ArrayList<UserGarden>();
+		return dao.findUserGarden();
 	}
 	
 	@POST

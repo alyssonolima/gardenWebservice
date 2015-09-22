@@ -13,7 +13,7 @@ public class StatePotRepository {
 	public List<StatePot> findStatePot(){
 		
 	
-		return new ArrayList<>();
+		return new ArrayList<StatePot>();
 	}
 	
 	public void insertStatePot(){

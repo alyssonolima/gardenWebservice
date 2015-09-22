@@ -9,7 +9,7 @@ public class NovoVaso {
 	private long id;
 	private String descricao;
 	private String MAC1;
-	private String MAC2;
+	
 	private int temp;
 	private int umidSolo;
 	private int umidAr;

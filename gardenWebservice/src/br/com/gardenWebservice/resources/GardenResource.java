@@ -1,6 +1,5 @@
 package br.com.gardenWebservice.resources;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -12,16 +11,19 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 import br.com.gardenWebservice.entity.Garden;
+import br.com.gardenWebservice.repository.GardenRepository;
 
 @Path(value = "/garden")
 public class GardenResource {
 
+	private GardenRepository dao = new GardenRepository();
+	
 	@GET
 	@Path(value = "/one")
 	@Produces("application/json")
 	public List<Garden> getGarden(){
 		
-		return new ArrayList<Garden>();
+		return dao.findGarden();
 	}
 	
 	@POST

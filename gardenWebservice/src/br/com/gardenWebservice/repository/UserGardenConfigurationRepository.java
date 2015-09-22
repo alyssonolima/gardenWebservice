@@ -13,7 +13,7 @@ public class UserGardenConfigurationRepository {
 	public List<UserGardenConfiguration> findUserGardenConfiguration(){
 		
 	
-		return new ArrayList<>();
+		return new ArrayList<UserGardenConfiguration>();
 	}
 	
 	public void insertUserGardenConfiguration(){
