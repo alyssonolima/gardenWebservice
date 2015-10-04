@@ -1,24 +1,23 @@
 package br.com.gardenWebservice.entity;
 
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class UserGardenConfiguration {
 	
-	@XmlElement
+	
 	private int id;	
 	
-	@XmlElement
+	
 	private int idUserGarden;
 	
-	@XmlElement
+	
 	private String description;
 	
-	@XmlElement
+	
 	private String value;
 	
-	@XmlElement
+	
 	private String confg;
 	
 	

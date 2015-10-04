@@ -2,28 +2,27 @@ package br.com.gardenWebservice.entity;
 
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Alert {
 
-	@XmlElement
+	
 	private int id;
 	
-	@XmlElement
+	
 	private int idPot;
 	
-	@XmlElement	
+		
 	private int idAlertType;
 	
-	@XmlElement
+	
 	private String description;
 	
-	@XmlElement
+	
 	private Date activationDate;
 	
-	@XmlElement
+	
 	private boolean active;
 	
 	

@@ -2,34 +2,33 @@ package br.com.gardenWebservice.entity;
 
 import java.util.Date;
 
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class Garden {
 
-	@XmlElement
+	
 	private int id;
 	
-	@XmlElement
+	
 	private int idUser;
 	
-	@XmlElement
+	
 	private String description;
 	
-	@XmlElement
+	
 	private String obs;
 	
-	@XmlElement
+	
 	private String ipServer;
 	
-	@XmlElement
+	
 	private String ipConcentrator;
 	
-	@XmlElement
+	
 	private boolean active;
 		
-	@XmlElement
+	
 	private Date lastUpdate;
 	
 	

@@ -85,7 +85,7 @@ public class UserGardenRepository {
 	public void deleteUserGarden(int id) throws SQLException{
 		StringBuilder sql = new StringBuilder(
 			" DELETE FROM `connected_garden`.`user_garden` " +
-			" WHERE `ID_USER`='" + id + "';"
+			" WHERE `ID_USER`='" + id + "'"
 		);
 		
 		jt = new JdbcTemplate(Fabrica.getDataSource());

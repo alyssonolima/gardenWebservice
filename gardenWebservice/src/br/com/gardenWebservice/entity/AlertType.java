@@ -1,18 +1,21 @@
 package br.com.gardenWebservice.entity;
 
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class AlertType {
 
-	@XmlElement
+	
+	public static final int HOUR = 1;
+	public static final int DAY = 2;
+	public static final int WEEK = 3;
+	public static final int MONTH = 4;
+	public static final int YEAR = 5;
+	
 	private int id;
-	
-	@XmlElement
+		
 	private String description;
-	
-	
+		
 	public int getId() {
 		return id;
 	}
@@ -24,6 +27,6 @@ public class AlertType {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}	
+	}
 	
 }

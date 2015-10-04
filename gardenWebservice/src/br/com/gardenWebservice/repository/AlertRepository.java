@@ -37,13 +37,26 @@ public class AlertRepository {
 		
 	}
 	
-	public void updateAlert(){
+	public void updateAlert(int id) throws SQLException{
+		StringBuilder sql = new StringBuilder(
+				
+				
+		);
 		
+		jt = new JdbcTemplate(Fabrica.getDataSource());
+		jt.update(sql.toString());
+		jt.getDataSource().getConnection().close();
 		
 				
 	}
 	
-	public void deleteAlert(){
-						
+	public void deleteAlert(int id) throws SQLException{
+		StringBuilder sql = new StringBuilder(
+				
+		);
+		
+		jt = new JdbcTemplate(Fabrica.getDataSource());
+		jt.update(sql.toString());
+		jt.getDataSource().getConnection().close();				
 	}
 }

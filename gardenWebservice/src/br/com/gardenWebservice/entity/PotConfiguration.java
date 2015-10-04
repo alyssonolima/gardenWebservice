@@ -1,27 +1,26 @@
 package br.com.gardenWebservice.entity;
 
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 public class PotConfiguration {
 
-	@XmlElement
+	
 	private int id;
 	
-	@XmlElement
+	
 	private String description;
 	
-	@XmlElement
+	
 	private int temp;
 	
-	@XmlElement
+	
 	private int humAir;
 	
-	@XmlElement
+	
 	private int humSoil;
 	
-	@XmlElement
+	
 	private int light;
 	
 	
