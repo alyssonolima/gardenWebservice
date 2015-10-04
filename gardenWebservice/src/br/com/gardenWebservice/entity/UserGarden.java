@@ -6,25 +6,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class UserGarden {
 
-	@XmlElement
+	
 	private int id;
-	
-	@XmlElement
-	private int idUserConfig;
-	
-	@XmlElement
+		
 	private String name;
-	
-	@XmlElement
+		
 	private String nickName;
-	
-	@XmlElement
+		
 	private String email;
-	
-	@XmlElement
+		
 	private String password;
-	
-	@XmlElement
+		
 	private boolean active;
 	
 	
@@ -34,13 +26,7 @@ public class UserGarden {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public int getIdUserConfig() {
-		return idUserConfig;
-	}
-	public void setIdUserConfig(int idUserConfig) {
-		this.idUserConfig = idUserConfig;
-	}
+	}	
 	public String getName() {
 		return name;
 	}

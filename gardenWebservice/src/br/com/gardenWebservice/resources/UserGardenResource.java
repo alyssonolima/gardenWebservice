@@ -1,5 +1,6 @@
 package br.com.gardenWebservice.resources;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -9,6 +10,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 import br.com.gardenWebservice.entity.UserGarden;
 import br.com.gardenWebservice.repository.UserGardenRepository;
@@ -20,30 +22,35 @@ public class UserGardenResource {
 	
 	@GET
 	@Path(value = "/one")
-	@Produces("application/json")
-	public List<UserGarden> getUserGarden(){
+	@Produces({"application/xml", "application/json"})
+	public List<UserGarden> getUserGarden(@QueryParam("idUser") String idUser) throws SQLException{
+		Integer idUserInteger = 1;
 		
-		return dao.findUserGarden();
+		return dao.findUserGarden(idUserInteger);
 	}
 	
 	@POST
 	@Path(value = "/one")
 	@Consumes("application/json")
-	public void postUserGarden(){
+	public void postUserGarden(UserGarden user) throws SQLException{
 		
+		dao.insertUserGarden(user);		
 	}
 	
 	@PUT
 	@Path(value = "/one")
 	@Consumes("application/json")
-	public void updateUserGarden(){
+	public void updateUserGarden(UserGarden user) throws SQLException{
 		
+		dao.updateUserGarden(user);		
 	}
 	
 	@DELETE
 	@Path(value = "/one")
 	@Consumes("application/json")
-	public void deleteUserGarden(){
+	public void deleteUserGarden(String idUser) throws SQLException{
+		Integer idUserInteger = Integer.parseInt(idUser);
 		
+		dao.deleteUserGarden(idUserInteger);		
 	}
 }

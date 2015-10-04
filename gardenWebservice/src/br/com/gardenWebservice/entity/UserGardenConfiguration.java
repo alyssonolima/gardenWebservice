@@ -10,6 +10,9 @@ public class UserGardenConfiguration {
 	private int id;	
 	
 	@XmlElement
+	private int idUserGarden;
+	
+	@XmlElement
 	private String description;
 	
 	@XmlElement
@@ -25,6 +28,12 @@ public class UserGardenConfiguration {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public int getIdUserGarden() {
+		return idUserGarden;
+	}
+	public void setIdUserGarden(int idUserGarden) {
+		this.idUserGarden = idUserGarden;
 	}
 	public String getDescription() {
 		return description;
