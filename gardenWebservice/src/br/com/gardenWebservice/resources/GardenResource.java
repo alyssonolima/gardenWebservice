@@ -21,7 +21,15 @@ public class GardenResource {
 	@GET
 	@Path(value = "/one")
 	@Produces("application/json")
-	public List<Garden> getGarden(){
+	public List<Garden> getGarden(String idUser){
+		
+		return dao.findGarden();
+	}
+	
+	@GET
+	@Path(value = "/one")
+	@Produces("application/json")
+	public List<Garden> getGarden(String idUser, String idGarden){
 		
 		return dao.findGarden();
 	}
@@ -29,21 +37,21 @@ public class GardenResource {
 	@POST
 	@Path(value = "/one")
 	@Consumes("application/json")
-	public void postGarden(){
+	public void postGarden(Garden garden){
 		
 	}
 	
 	@PUT
 	@Path(value = "/one")
 	@Consumes("application/json")
-	public void updateGarden(){
+	public void updateGarden(Garden garden){
 		
 	}
 	
 	@DELETE
 	@Path(value = "/one")
 	@Consumes("application/json")
-	public void deleteGarden(){
+	public void deleteGarden(String idGarden){
 		
 	}
 }

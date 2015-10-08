@@ -21,7 +21,15 @@ public class AlertResource {
 	@GET
 	@Path(value = "/one")
 	@Produces("application/json")
-	public List<Alert> getAlert(){
+	public List<Alert> getAlert(String idPot){
+		
+		return dao.findAlert();
+	}
+	
+	@GET
+	@Path(value = "/one")
+	@Produces("application/json")
+	public List<Alert> getAlert(String idPot, String idAlert){
 		
 		return dao.findAlert();
 	}

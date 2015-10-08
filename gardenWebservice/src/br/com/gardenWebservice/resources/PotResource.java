@@ -9,6 +9,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 import br.com.gardenWebservice.entity.Pot;
 import br.com.gardenWebservice.repository.PotRepository;
@@ -21,7 +22,7 @@ public class PotResource {
 	@GET
 	@Path(value = "/one")
 	@Produces("application/json")
-	public List<Pot> getPot(){
+	public List<Pot> getPot(@QueryParam("idGarden") String idGarden){
 		
 		return dao.findPot();
 	}
@@ -29,21 +30,21 @@ public class PotResource {
 	@POST
 	@Path(value = "/one")
 	@Consumes("application/json")
-	public void postPot(){
+	public void postPot(Pot pot){
 		
 	}
 	
 	@PUT
 	@Path(value = "/one")
 	@Consumes("application/json")
-	public void updatePot(){
+	public void updatePot(Pot pot){
 		
 	}
 	
 	@DELETE
 	@Path(value = "/one")
 	@Consumes("application/json")
-	public void deletePot(){
+	public void deletePot(String idPot){ 
 		
 	}
 	

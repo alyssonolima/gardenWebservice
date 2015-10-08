@@ -23,7 +23,7 @@ public class UserGardenResource {
 	@GET
 	@Path(value = "/one")
 	@Produces({"application/xml", "application/json"})
-	public List<UserGarden> getUserGarden(@QueryParam("idUser") String idUser) throws SQLException{
+	public List<UserGarden> getUserGarden(@QueryParam("login") String login) throws SQLException{
 		Integer idUserInteger = 1;
 		
 		return dao.findUserGarden(idUserInteger);
