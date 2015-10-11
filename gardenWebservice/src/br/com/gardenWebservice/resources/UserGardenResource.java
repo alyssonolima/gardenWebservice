@@ -22,7 +22,7 @@ public class UserGardenResource {
 	
 	@GET
 	@Path(value = "/one")
-	@Produces({"application/xml", "application/json"})
+	@Produces("application/json")
 	public List<UserGarden> getUserGarden(@QueryParam("login") String login) throws SQLException{
 		Integer idUserInteger = 1;
 		

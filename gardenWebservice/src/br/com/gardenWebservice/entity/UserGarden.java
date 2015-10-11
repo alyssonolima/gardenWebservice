@@ -17,8 +17,7 @@ public class UserGarden {
 	private String password;
 		
 	private boolean active;
-	
-	
+		
 	
 	public int getId() {
 		return id;
