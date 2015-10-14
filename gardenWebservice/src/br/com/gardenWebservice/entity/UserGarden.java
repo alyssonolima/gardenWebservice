@@ -18,6 +18,18 @@ public class UserGarden {
 		
 	private boolean active;
 		
+	public UserGarden(){
+		
+	}
+	
+	public void reset(){
+		id = 0;
+		name = "";
+		nickName = "";
+		email = "";
+		password = "";
+		active = false;
+	}
 	
 	public int getId() {
 		return id;

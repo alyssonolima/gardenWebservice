@@ -21,10 +21,10 @@ public class GardenRepository {
 		StringBuilder sql = new StringBuilder(
 			" SELECT * " +
 			" FROM connected_garden.garden " +
-			" WHERE ID_USER = :idUser " );
+			" WHERE ID_USER = " + idUser );
 		
 		if(idGarden != null)
-			sql.append(" AND ID_GARDEN = :idGarden");
+			sql.append(" AND ID_GARDEN = " + idGarden);
 		
 		jt = new JdbcTemplate(Fabrica.getDataSource());
 		List<Map<String, Object>> result = jt.queryForList(sql.toString());

@@ -28,16 +28,16 @@ public class GardenResource {
 		
 		return dao.findGarden(idUserInteger , null);
 	}
-	/*
+	
 	@GET
 	@Path(value = "/one")
 	@Produces("application/json")
-	public Garden getGarden(String idUser, String idGarden) throws SQLException{
+	public Garden getGarden(@QueryParam("idUser") String idUser, @QueryParam("idGarden") String idGarden) throws SQLException{
 		Integer idUserInteger = Integer.parseInt(idUser);
 		Integer idGardenInteger = Integer.parseInt(idGarden);		
 		
 		return (dao.findGarden(idUserInteger,idGardenInteger)).get(0);
-	}*/
+	}
 	
 	@POST
 	@Path(value = "/one")
