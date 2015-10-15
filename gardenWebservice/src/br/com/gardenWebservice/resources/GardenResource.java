@@ -9,6 +9,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
@@ -30,9 +31,9 @@ public class GardenResource {
 	}
 	
 	@GET
-	@Path(value = "/one")
+	@Path(value = "/one/idGarden")
 	@Produces("application/json")
-	public Garden getGarden(@QueryParam("idUser") String idUser, @QueryParam("idGarden") String idGarden) throws SQLException{
+	public Garden getGarden(@QueryParam("idUser") String idUser, @PathParam("idGarden") String idGarden) throws SQLException{
 		Integer idUserInteger = Integer.parseInt(idUser);
 		Integer idGardenInteger = Integer.parseInt(idGarden);		
 		
