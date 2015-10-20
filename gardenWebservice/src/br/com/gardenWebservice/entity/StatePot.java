@@ -115,7 +115,5 @@ public class StatePot {
 	public void setIrrigationActive(boolean irrigationActive) {
 		this.irrigationActive = irrigationActive;
 	}
-	
-	
-	
+
 }
