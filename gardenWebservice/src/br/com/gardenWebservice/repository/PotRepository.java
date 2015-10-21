@@ -17,12 +17,14 @@ public class PotRepository {
 	
 	private JdbcTemplate jt;
 	
-	public List<Pot> findPot(int idGarden) throws SQLException{
+	public List<Pot> findPot(int idUser) throws SQLException{
 		
 		StringBuilder sql = new StringBuilder(
 			" SELECT * " +
-			" FROM connected_garden.pot " +
-			" where ID_GARDEN = " + idGarden
+			" FROM connected_garden.pot pot " +
+			" INNER JOIN connected_garden.garden garden ON garden.ID_GARDEN = pot.ID_GARDEN " +
+			" INNER JOIN connected_garden.user_garden user ON user.ID_USER = garden.ID_USER " +
+			" where garden.ID_USER = " + idUser
 		);			
 						
 		jt = new JdbcTemplate(Fabrica.getDataSource());		
