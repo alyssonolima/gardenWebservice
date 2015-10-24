@@ -1,7 +1,6 @@
 package br.com.gardenWebservice.resources;
 
 import java.sql.SQLException;
-import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -23,10 +22,9 @@ public class UserGardenResource {
 	@GET
 	@Path(value = "/one")
 	@Produces("application/json")
-	public List<UserGarden> getUserGarden(@QueryParam("login") String login) throws SQLException{
-		Integer idUserInteger = 1;
-		
-		return dao.findUserGarden(idUserInteger);
+	public UserGarden getUserGarden(@QueryParam("login") String login) throws SQLException{
+				
+		return dao.findUserGarden(login);
 	}
 	
 	@POST

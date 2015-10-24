@@ -24,7 +24,7 @@ public class AlertRepository {
 			" FROM connected_garden.alert " +
 			" WHERE ID_POT = " + idPot		
 		);
-		if(idAlert != null)
+		if(idAlert > 0)
 			sql.append(" AND ID_ALERT = " + idAlert);
 	
 		jt = new JdbcTemplate(Fabrica.getDataSource());

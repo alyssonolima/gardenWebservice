@@ -1,7 +1,6 @@
 package br.com.gardenWebservice.repository;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,21 +14,20 @@ public class UserGardenRepository {
 	
 	private JdbcTemplate jt;
 	
-	public List<UserGarden> findUserGarden(int id) throws SQLException{
+	public UserGarden findUserGarden(String login) throws SQLException{
 		
 		StringBuilder sql = new StringBuilder(
 			
 			" SELECT * " +
 			" FROM connected_garden.user_garden user " +
-			" WHERE user.id_user = " + id
+			" WHERE user.EMAIL = " + login
 			);
 	
 		jt = new JdbcTemplate(Fabrica.getDataSource());		
 		List<Map<String, Object>> result = jt.queryForList(sql.toString());
-		ArrayList<UserGarden> users = new ArrayList<UserGarden>();
+		UserGarden user = new UserGarden();
 		
-		for(Map<String, Object> map: result){
-			UserGarden user = new UserGarden();
+		for(Map<String, Object> map: result){			
 			user.setId((int)map.get("ID_USER"));
 			user.setName((String) map.get("name"));
 			user.setEmail((String) map.get("email"));
@@ -37,11 +35,9 @@ public class UserGardenRepository {
 			user.setPassword((String) map.get("password"));
 			Boolean active = (Boolean) map.get("active");
 			user.setActive( active.booleanValue());
-			
-			users.add(user);
 		}
-		
-		return users;
+					
+		return user;
 	}
 	
 	public void insertUserGarden(UserGarden user) throws SQLException{

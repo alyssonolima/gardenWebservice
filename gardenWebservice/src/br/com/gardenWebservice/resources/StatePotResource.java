@@ -23,8 +23,8 @@ public class StatePotResource {
 	@GET
 	@Path(value = "/one")
 	@Produces("application/json")
-	public List<StatePot> getStatePot(@QueryParam("idPot") String idUser) throws SQLException{
-		Integer id = Integer.parseInt(idUser);
+	public List<StatePot> getStatePot(@QueryParam("idPot") String idPot) throws SQLException{
+		Integer id = Integer.parseInt(idPot);
 		
 		return dao.findStatePot(id);
 	}

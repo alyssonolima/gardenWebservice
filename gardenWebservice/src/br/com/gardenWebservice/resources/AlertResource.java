@@ -19,26 +19,23 @@ import br.com.gardenWebservice.repository.AlertRepository;
 public class AlertResource {
 
 	AlertRepository dao = new AlertRepository();
-	
+	//Para chamar os dois query param usa-se o & como separador. Ex.: ?idPot=1&idAlert=2
 	@GET
 	@Path(value = "/one")
 	@Produces("application/json")
-	public List<Alert> getAlert(@QueryParam("idPot") String idPot) throws SQLException{
+	public List<Alert> getAlert(@QueryParam("idPot") String idPot, @QueryParam("idAlert") String idAlert) throws SQLException{
 		Integer idPotInteger = Integer.parseInt(idPot);
+		idAlert += "";
 		
+		Integer idAlertInteger;
+		if(idAlert.isEmpty()){ 
+			idAlertInteger = Integer.parseInt(idAlert);
+		} else 
+			idAlertInteger = 0;		
 		
-		return dao.findAlert(idPotInteger, null);
+		return dao.findAlert(idPotInteger, idAlertInteger);
 	}
 	
-	@GET
-	@Path(value = "/one")
-	@Produces("application/json")
-	public Alert getAlert(@QueryParam("idPot")String idPot, @QueryParam("idAlert") String idAlert) throws SQLException{
-		Integer idPotInteger = Integer.parseInt(idPot);
-		Integer idAlertInteger = Integer.parseInt(idAlert);
-		
-		return dao.findAlert(idPotInteger, idAlertInteger).get(0);
-	}
 	
 	@POST
 	@Path(value = "/one")
