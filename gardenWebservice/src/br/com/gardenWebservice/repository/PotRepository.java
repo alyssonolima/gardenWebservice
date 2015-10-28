@@ -42,6 +42,7 @@ public class PotRepository {
 			pot.setLight((int) map.get("LIGHT"));
 			Boolean active = (Boolean) map.get("ACTIVE");
 			pot.setActive(active);
+			pot.setMac1((String)map.get("MAC1"));
 			
 			pots.add(pot);
 		}
