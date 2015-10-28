@@ -49,12 +49,12 @@ create table GARDEN
 (
    ID_GARDEN            int not null auto_increment comment 'Column that stores the garden id.',
    ID_USER              int comment 'Column that stores the user id.',
-   DESCRIPTION          varchar(50) not null default ' ' comment 'Column that stores the description of garden.',   
+   DESCRIPTION          varchar(50) not null default ' ' comment 'Column that stores the description of garden.',
+   LAST_UPDATE          timestamp not null default CURRENT_TIMESTAMP comment 'Column that stores the last update of the garden.',
+   ACTIVE               bit not null default 1 comment 'Column that stores the information if the garden is active.',
    OBS                  varchar(255) default ' ' comment 'Column that stores observation about the garden.',
    IP_SERVER            varchar(255) default ' ' comment 'Column that stores the ip of the server.',
    IP_CONCENTRATOR      varchar(255) default ' ' comment 'Column that stores the ip of concentrator.',
-   LAST_UPDATE          timestamp not null default CURRENT_TIMESTAMP comment 'Column that stores the last update of the garden.',
-   ACTIVE               bit not null default 1 comment 'Column that stores the information if the garden is active.',
    primary key (ID_GARDEN)
 );
 
@@ -73,6 +73,8 @@ create table POT
    HUM_SOIL             int not null default 0 comment 'Column that stores the information of soil humidity of pot.',
    LIGHT                int not null default 0 comment 'Column that stores information of light incidence.',
    ACTIVE               bit not null default 1 comment 'Column that stores information of pot status.',
+   MAC1					varchar(10) null default ' ' comment 'Column that stores the information of mac 1.',   
+   MAC2					varchar(10) null default ' ' comment 'Column that stores the information of mac 2.',
    primary key (ID_POT)
 );
 
