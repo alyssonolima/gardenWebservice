@@ -8,23 +8,21 @@ public class Pot {
 	
 	private int id;
 	
-	private int idGarden;
+	private int idGarden;	
 	
+	private String description;	
 	
-	private String description;
+	private int temp;	
 	
+	private int humAir;	
 	
-	private int temp;
-	
-	
-	private int humAir;
-	
-	
-	private int humSoil;
-	
+	private int humSoil;	
 	
 	private int light;
 	
+	private String mac1;
+	
+	private String mac2;
 	
 	private boolean active;
 	
@@ -85,6 +83,23 @@ public class Pot {
 		this.light = light;
 	}
 	
+	public String getMac1() {
+		return mac1;
+	}
+
+	public void setMac1(String mac1) {
+		this.mac1 = mac1;
+		this.mac2 = mac1;
+	}
+
+	public String getMac2() {
+		return mac2;
+	}
+
+	public void setMac2(String mac2) {
+		this.mac2 = mac2;
+	}
+
 	public boolean isActive() {
 		return active;
 	}
