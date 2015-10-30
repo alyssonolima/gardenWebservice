@@ -17,14 +17,19 @@ public class GardenRepository {
 	
 	private JdbcTemplate jt;
 	
-	public List<Garden> findGarden(Integer idUser, Integer idGarden) throws SQLException{
+	public List<Garden> findGarden(String query1, String query2) throws SQLException{
 		StringBuilder sql = new StringBuilder(
 			" SELECT * " +
-			" FROM connected_garden.garden " +
-			" WHERE ID_USER = " + idUser );
+			" FROM connected_garden.garden garden " +
+			" inner join connected_garden.user_garden us " +
+			" WHERE 1=1 " );
 		
-		if(idGarden != null)
-			sql.append(" AND ID_GARDEN = " + idGarden);
+		if(!query1.isEmpty())
+			sql.append(query1);
+		
+		if(!query2.isEmpty())
+			sql.append(query2);
+		
 		
 		jt = new JdbcTemplate(Fabrica.getDataSource());
 		List<Map<String, Object>> result = jt.queryForList(sql.toString());

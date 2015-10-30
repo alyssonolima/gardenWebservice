@@ -17,16 +17,23 @@ public class PotRepository {
 	
 	private JdbcTemplate jt;
 	
-	public List<Pot> findPot(int idUser) throws SQLException{
+	public List<Pot> findPot(Integer idUser, Integer idGarden) throws SQLException{
 		
 		StringBuilder sql = new StringBuilder(
 			" SELECT * " +
 			" FROM connected_garden.pot pot " +
 			" INNER JOIN connected_garden.garden garden ON garden.ID_GARDEN = pot.ID_GARDEN " +
 			" INNER JOIN connected_garden.user_garden user ON user.ID_USER = garden.ID_USER " +
-			" where garden.ID_USER = " + idUser
-		);			
+			" where 1=1 "
+		);
+		
+		if(idUser != null)
+			sql.append(" AND garden.ID_USER = " + idUser);
 						
+		if(idGarden != null)
+			sql.append(" AND garden.ID_GARDEN = " + idGarden);
+			
+			
 		jt = new JdbcTemplate(Fabrica.getDataSource());		
 		List<Map<String, Object>> result = jt.queryForList(sql.toString());
 		List<Pot> pots = new ArrayList<Pot>();
@@ -50,6 +57,49 @@ public class PotRepository {
 		
 		return pots;
 	}
+	
+	
+	public List<Pot> findPot(String query1, String query2) throws SQLException{
+		
+		String strQuery = " SELECT Pot.* " +
+				" FROM connected_garden.pot pot " +
+				" INNER JOIN connected_garden.garden garden ON garden.ID_GARDEN = pot.ID_GARDEN " +
+				" INNER JOIN connected_garden.user_garden user ON user.ID_USER = garden.ID_USER " +
+				" WHERE 1=1 " ;
+		
+		if(query1 != ""){
+			strQuery += query1;
+		}
+		
+		if(query2 != ""){
+			strQuery += query2;
+		}
+		
+		StringBuilder sql = new StringBuilder(strQuery);			
+						
+		jt = new JdbcTemplate(Fabrica.getDataSource());		
+		List<Map<String, Object>> result = jt.queryForList(sql.toString());
+		List<Pot> pots = new ArrayList<Pot>();
+		
+		for(Map<String, Object> map: result){
+			Pot pot = new Pot();
+			pot.setId((int)map.get("ID_POT"));
+			pot.setIdGarden((int) map.get("ID_GARDEN"));
+			pot.setDescription((String)map.get("DESCRIPTION"));
+			pot.setTemp((int) map.get("TEMP"));
+			pot.setHumAir((int) map.get("HUM_AIR"));
+			pot.setHumSoil((int) map.get("HUM_SOIL"));
+			pot.setLight((int) map.get("LIGHT"));
+			Boolean active = (Boolean) map.get("ACTIVE");
+			pot.setActive(active);
+			pot.setMac1((String)map.get("MAC1"));
+			pots.add(pot);
+		}
+		
+		
+		return pots;
+	}
+		
 	
 	public void insertPot(Pot pot) throws SQLException{
 		StringBuilder sql = new StringBuilder(

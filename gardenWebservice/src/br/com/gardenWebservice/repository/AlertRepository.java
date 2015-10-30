@@ -17,16 +17,23 @@ public class AlertRepository {
 
 	private JdbcTemplate jt;
 	
-	public List<Alert> findAlert(Integer idPot, Integer idAlert) throws SQLException{
+	public List<Alert> findAlert(String query1, String query2) throws SQLException{
 		
 		StringBuilder sql = new StringBuilder(
 			" SELECT * " +
-			" FROM connected_garden.alert " +
-			" WHERE ID_POT = " + idPot		
+			" FROM connected_garden.alert alert " +
+			" inner join connected_garden.pot pot on pot.ID_POT = alert.ID_POT " +
+			" inner join connected_garden.garden garden on garden.ID_GARDEN = pot.ID_GARDEN " +
+			" inner join connected_garden.user_garden us on us.ID_USER = garden.ID_USER " +
+			" WHERE 1=1 "		
 		);
-		if(idAlert > 0)
-			sql.append(" AND ID_ALERT = " + idAlert);
+		
+		if(!query1.isEmpty())
+			sql.append(query1);
 	
+		if(!query2.isEmpty())
+			sql.append(query2);
+		
 		jt = new JdbcTemplate(Fabrica.getDataSource());
 		List<Map<String, Object>> result = jt.queryForList(sql.toString());
 		List<Alert> alerts = new ArrayList<Alert>();

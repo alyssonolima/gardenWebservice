@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -23,10 +24,11 @@ public class StatePotResource {
 	@GET
 	@Path(value = "/one")
 	@Produces("application/json")
-	public List<StatePot> getStatePot(@QueryParam("idPot") String idPot) throws SQLException{
-		Integer id = Integer.parseInt(idPot);
+	public List<StatePot> getStatePot(@DefaultValue("") @QueryParam("email") String email, @DefaultValue("") @QueryParam("idGarden")String  idGarden) throws SQLException{
+		String query1 = (!email.isEmpty()) ? (" AND us.EMAIL = " + email) : "";
+		String query2 = (!idGarden.isEmpty()) ? (" AND garden.ID_GARDEN = " + idGarden) : "";		
 		
-		return dao.findStatePot(id);
+		return dao.findStatePot(query1, query2);
 	}
 	
 	@POST

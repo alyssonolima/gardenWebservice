@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -24,22 +25,14 @@ public class GardenResource {
 	@GET
 	@Path(value = "/one")
 	@Produces("application/json")
-	public List<Garden> getGarden(@QueryParam("idUser") String idUser) throws SQLException{
-		Integer idUserInteger = Integer.parseInt(idUser);
+	public List<Garden> getGarden(@DefaultValue("") @QueryParam("email") String email, @DefaultValue("") @QueryParam("idGarden")String  idGarden) throws SQLException{
+		String query1 = (!email.isEmpty()) ? (" AND us.EMAIL = " + email) : "";
+		String query2 = (!idGarden.isEmpty()) ? (" AND garden.ID_GARDEN = " + idGarden) : "";
 		
-		return dao.findGarden(idUserInteger , null);
+		return dao.findGarden(query1 , query2);
 	}
 	
-	@GET
-	@Path(value = "/one/idGarden")
-	@Produces("application/json")
-	public Garden getGarden(@QueryParam("idUser") String idUser, @PathParam("idGarden") String idGarden) throws SQLException{
-		Integer idUserInteger = Integer.parseInt(idUser);
-		Integer idGardenInteger = Integer.parseInt(idGarden);		
 		
-		return (dao.findGarden(idUserInteger,idGardenInteger)).get(0);
-	}
-	
 	@POST
 	@Path(value = "/one")
 	@Consumes("application/json")

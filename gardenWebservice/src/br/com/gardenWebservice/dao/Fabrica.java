@@ -13,7 +13,7 @@ public class Fabrica {
 	 		SimpleDriverDataSource dataSource = new SimpleDriverDataSource();
 	 		dataSource.setDriver(new com.mysql.jdbc.Driver());
 	        dataSource.setUrl("jdbc:mysql://localhost/connected_garden");
-	        dataSource.setUsername("garden");
+	        dataSource.setUsername("root");
 	        dataSource.setPassword("garden");
 	 		
 	 		return dataSource;

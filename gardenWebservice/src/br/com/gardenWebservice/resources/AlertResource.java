@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -23,17 +24,11 @@ public class AlertResource {
 	@GET
 	@Path(value = "/one")
 	@Produces("application/json")
-	public List<Alert> getAlert(@QueryParam("idPot") String idPot, @QueryParam("idAlert") String idAlert) throws SQLException{
-		Integer idPotInteger = Integer.parseInt(idPot);
-		idAlert += "";
+	public List<Alert> getAlert(@DefaultValue("") @QueryParam("email") String email, @DefaultValue("") @QueryParam("idAlert") String idAlert) throws SQLException{
+		String query1 = (!email.isEmpty()) ? (" AND us.EMAIL = " + email) : "";
+		String query2 = (!idAlert.isEmpty()) ? (" AND garden.ID_GARDEN = " + idAlert) : "";
 		
-		Integer idAlertInteger;
-		if(idAlert.isEmpty()){ 
-			idAlertInteger = Integer.parseInt(idAlert);
-		} else 
-			idAlertInteger = 0;		
-		
-		return dao.findAlert(idPotInteger, idAlertInteger);
+		return dao.findAlert(query1, query2);
 	}
 	
 	
