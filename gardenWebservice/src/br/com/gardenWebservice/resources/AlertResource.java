@@ -12,6 +12,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 
 import br.com.gardenWebservice.entity.Alert;
 import br.com.gardenWebservice.repository.AlertRepository;
@@ -34,7 +35,7 @@ public class AlertResource {
 	
 	@POST
 	@Path(value = "/one")
-	@Consumes("application/json")
+	@Consumes(MediaType.APPLICATION_JSON)
 	public void postAlert(Alert alert) throws SQLException{
 		
 		dao.insertAlert(alert);

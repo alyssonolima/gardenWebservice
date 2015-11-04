@@ -13,6 +13,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 
 import br.com.gardenWebservice.entity.Garden;
 import br.com.gardenWebservice.repository.GardenRepository;
@@ -35,7 +36,7 @@ public class GardenResource {
 		
 	@POST
 	@Path(value = "/one")
-	@Consumes("application/json")
+	@Consumes(MediaType.APPLICATION_JSON)
 	public void postGarden(Garden garden) throws SQLException{
 		dao.insertGarden(garden);		
 	}
